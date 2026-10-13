@@ -9,40 +9,47 @@ type ProductId = keyof Dictionary["products"]["items"];
 type Product = {
   id: ProductId;
   image?: string;
+  /** Where the landmark sits in the picture, so the crop keeps it in view. */
+  focus?: string;
   price: string;
   /** The price before a discount; shown struck through beside the current one. */
   oldPrice?: string;
 };
 
 const products: Product[] = [
-  { id: "london", image: "/images/products/london.webp", price: "39.99" },
+  { id: "london", image: "/images/products/london.webp", focus: "30% 40%", price: "39.99" },
   {
     id: "bali",
     image: "/images/products/bali.webp",
+    focus: "50% 60%",
     price: "89.99",
     oldPrice: "118.99",
   },
   {
     id: "barcelona",
     image: "/images/products/barcelona.webp",
+    focus: "45% 25%",
     price: "29.99",
     oldPrice: "34.99",
   },
   {
     id: "amsterdam",
     image: "/images/products/amsterdam.webp",
+    focus: "50% 40%",
     price: "29.99",
     oldPrice: "34.99",
   },
   {
     id: "northItaly",
     image: "/images/products/north-italy.webp",
+    focus: "40% 45%",
     price: "29.99",
     oldPrice: "34.99",
   },
   {
     id: "prague",
     image: "/images/products/prague.webp",
+    focus: "70% 28%",
     price: "29.99",
     oldPrice: "34.99",
   },
@@ -70,8 +77,9 @@ export function Products({ lang, dict }: Props) {
         </p>
       </div>
 
-      <ul className="mx-auto grid max-w-md gap-6 sm:max-w-6xl sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-        {products.map(({ id, image, price, oldPrice }) => {
+      {/* Two to a row on a phone, so the whole range is a short scroll. */}
+      <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+        {products.map(({ id, image, focus, price, oldPrice }) => {
           const item = copy.items[id];
 
           return (
@@ -79,58 +87,62 @@ export function Products({ lang, dict }: Props) {
               <FadeCard
                 image={image}
                 imageAlt={item.imageAlt}
-                className="h-[35rem] [--fade-from:14%] [--fade-to:72%]"
+                imagePosition={focus}
+                className="h-[22.5rem] [--fade-from:18%] [--fade-to:50%] [--image-height:50%] max-sm:rounded-[20px] max-sm:p-3.5 sm:h-[30rem]"
               >
-                <h3 className="text-[2.75rem]/[0.95] font-medium text-balance text-ink ltr:font-serif ltr:tracking-[-0.045em] rtl:text-4xl/[1.3] rtl:font-extrabold">
+                <h3 className="text-2xl/[1.05] font-medium text-balance text-ink sm:text-4xl/[0.95] ltr:font-serif ltr:tracking-[-0.045em] rtl:text-xl/[1.4] rtl:font-extrabold sm:rtl:text-3xl/[1.3]">
                   {item.name}
                 </h3>
-                <p className="mt-3 max-w-[34ch] text-sm/[1.55] text-pretty text-ink-muted">
+                {/* The phone card is too narrow for it; "Read more" carries it there. */}
+                <p className="mt-3 max-w-[34ch] text-sm/[1.55] text-pretty text-ink-muted max-sm:hidden">
                   {item.description}
                 </p>
 
                 <div
-                  className={`mt-5 flex items-center justify-between gap-3 border-t border-black/10 pt-3 text-ink-muted ${smallCaps}`}
+                  className={`mt-2.5 flex flex-col gap-1 border-t border-black/10 pt-2 text-ink-muted sm:mt-5 sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:pt-3 ${smallCaps}`}
                 >
                   <span>{item.country}</span>
-                  <span className="flex items-baseline gap-2 ltr:tracking-normal">
+                  <span className="flex flex-wrap items-baseline gap-x-2 whitespace-nowrap sm:shrink-0 sm:flex-nowrap ltr:tracking-normal">
+                    <span className="text-base/6 text-ink sm:order-last sm:text-lg/7">
+                      {copy.price.replace("{amount}", price)}
+                    </span>
                     {oldPrice ? (
-                      <s className="text-sm/none font-semibold">
+                      <s className="text-xs/none font-semibold">
                         {copy.price.replace("{amount}", oldPrice)}
                       </s>
                     ) : null}
-                    <span className="text-xl/7 text-ink">
-                      {copy.price.replace("{amount}", price)}
-                    </span>
                   </span>
                 </div>
 
-                <BuyButton
-                  lang={lang}
-                  productId={id}
-                  productName={item.name}
-                  label={copy.buy}
-                  copy={dict.checkout}
-                />
-                <DetailsButton
-                  productId={id}
-                  label={copy.moreInfo}
-                  name={item.name}
-                  country={item.country}
-                  description={item.description}
-                  image={image}
-                  imageAlt={item.imageAlt}
-                  price={copy.price.replace("{amount}", price)}
-                  copy={dict.details}
-                  action={
-                    <BuyButton
-                      lang={lang}
-                      productId={id}
-                      productName={item.name}
-                      label={copy.buy}
-                      copy={dict.checkout}
-                    />
-                  }
-                />
+                <div className="max-sm:[&>button]:text-sm/[22px] max-sm:[&>button]:first:mt-3 max-sm:[&>button]:last:mt-2">
+                  <BuyButton
+                    lang={lang}
+                    productId={id}
+                    productName={item.name}
+                    label={copy.buy}
+                    copy={dict.checkout}
+                  />
+                  <DetailsButton
+                    productId={id}
+                    label={copy.moreInfo}
+                    name={item.name}
+                    country={item.country}
+                    description={item.description}
+                    image={image}
+                    imageAlt={item.imageAlt}
+                    price={copy.price.replace("{amount}", price)}
+                    copy={dict.details}
+                    action={
+                      <BuyButton
+                        lang={lang}
+                        productId={id}
+                        productName={item.name}
+                        label={copy.buy}
+                        copy={dict.checkout}
+                      />
+                    }
+                  />
+                </div>
               </FadeCard>
             </li>
           );

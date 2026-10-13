@@ -4,6 +4,8 @@ type Props = {
   /** Path under /public. Until a picture is added the card shows a plain sky. */
   image?: string;
   imageAlt: string;
+  /** Which part of the picture to keep in view when it is cropped, e.g. "50% 30%". */
+  imagePosition?: string;
   /** A decorative drawing, set a little below the centre of the space above the copy. */
   art?: ReactNode;
   /** Sets the card's height or shape. */
@@ -11,8 +13,9 @@ type Props = {
   children: ReactNode;
 };
 
-/** A white card whose picture melts into the copy at the bottom. */
-export function FadeCard({ image, imageAlt, art, className, children }: Props) {
+/** A white card whose picture melts into the copy at the bottom. The picture fills the card
+    unless an ancestor sets --image-height, which keeps it to the top part. */
+export function FadeCard({ image, imageAlt, imagePosition, art, className, children }: Props) {
   return (
     <article
       className={`relative isolate flex flex-col justify-end overflow-hidden rounded-[26px] bg-white p-6 shadow-card outline outline-black/16 focus-within:ring-4 focus-within:ring-brand/50 ${className}`}
@@ -23,7 +26,8 @@ export function FadeCard({ image, imageAlt, art, className, children }: Props) {
           alt={imageAlt}
           loading="lazy"
           decoding="async"
-          className="absolute inset-0 -z-10 size-full object-cover object-top select-none"
+          style={imagePosition ? { objectPosition: imagePosition } : undefined}
+          className="absolute inset-x-0 top-0 -z-10 h-(--image-height,100%) w-full object-cover object-top select-none"
         />
       ) : (
         <div
