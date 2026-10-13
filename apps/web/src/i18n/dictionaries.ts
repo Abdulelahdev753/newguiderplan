@@ -196,12 +196,12 @@ const en = {
     labels: { previous: "Previous", next: "Next", enlarge: "Enlarge", close: "Close" },
     // The counter above the pictures. The number sits between `before` and `after`.
     trust: {
-      count: 800,
+      count: 1000,
       before: "",
       after: "+",
       label: "happy customers trust GuiderPlan",
       // Read out in place of the moving number.
-      full: "More than 800 happy customers trust GuiderPlan",
+      full: "More than 1,000 happy customers trust GuiderPlan",
     },
   },
   howItWorks: {
@@ -454,11 +454,11 @@ const ar: Dictionary = {
     ],
     labels: { previous: "السابق", next: "التالي", enlarge: "تكبير", close: "إغلاق" },
     trust: {
-      count: 800,
+      count: 1000,
       before: "+",
       after: "",
       label: "عميل سعيد يثقون في GuiderPlan",
-      full: "أكثر من 800 عميل سعيد يثقون في GuiderPlan",
+      full: "أكثر من 1000 عميل سعيد يثقون في GuiderPlan",
     },
   },
   howItWorks: {
