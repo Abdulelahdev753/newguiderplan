@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #ffffff;
+  --color-ink: #141414;
+  --color-ink-muted: #6b6b6b;
+  --color-brand: #4d9cfb;
+  --color-brand-hover: #3b8ff7;
+  /* Brand blue dark enough to read as text on a light background. */
+  --color-brand-ink: #1667d9;
+
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+
+  /* Two white inner shadows, 60% opacity, blur 5: (0, 2) and (-1, 0). */
+  --shadow-cta: inset 0 2px 5px rgb(255 255 255 / 0.6), inset -1px 0 5px rgb(255 255 255 / 0.6);
+  /* The same two inner shadows in black, for a white button. */
+  --shadow-cta-light: inset 0 -2px 5px rgb(0 0 0 / 0.16), inset -1px 0 5px rgb(0 0 0 / 0.1);
+  --shadow-card:
+    0 1px 2px rgb(44 38 33 / 0.12), 0 4px 8px -3px rgb(44 38 33 / 0.18),
+    0 18px 32px -18px rgb(37 31 24 / 0.4);
+
+  /* A finger dragging towards --swipe-x, then fading out and starting over. */
+  --animate-swipe-hint: swipe-hint 1.8s ease-in-out infinite;
+  @keyframes swipe-hint {
+    0% {
+      translate: calc(var(--swipe-x) * -1);
+      opacity: 0;
+    }
+    20% {
+      translate: calc(var(--swipe-x) * -1);
+      opacity: 1;
+    }
+    70% {
+      translate: var(--swipe-x);
+      opacity: 1;
+    }
+    100% {
+      translate: var(--swipe-x);
+      opacity: 0;
+    }
+  }
+}
+
+/* A fade from clear to solid along cubic-bezier(0.42, 0, 0.32, 1). A plain two-stop gradient
+   shows a visible band where it starts and ends; the extra stops hide it. It runs from 10% to
+   76% of the height unless an ancestor sets --fade-from and --fade-to. */
+@utility mask-fade-eased {
+  --_from: var(--fade-from, 10%);
+  --_step: calc((var(--fade-to, 76%) - var(--_from)) / 12);
+  mask-image: linear-gradient(
+    to bottom,
+    #0000 var(--_from),
+    rgb(0 0 0 / 0.015) calc(var(--_from) + var(--_step) * 1),
+    rgb(0 0 0 / 0.068) calc(var(--_from) + var(--_step) * 2),
+    rgb(0 0 0 / 0.176) calc(var(--_from) + var(--_step) * 3),
+    rgb(0 0 0 / 0.342) calc(var(--_from) + var(--_step) * 4),
+    rgb(0 0 0 / 0.531) calc(var(--_from) + var(--_step) * 5),
+    rgb(0 0 0 / 0.691) calc(var(--_from) + var(--_step) * 6),
+    rgb(0 0 0 / 0.808) calc(var(--_from) + var(--_step) * 7),
+    rgb(0 0 0 / 0.889) calc(var(--_from) + var(--_step) * 8),
+    rgb(0 0 0 / 0.943) calc(var(--_from) + var(--_step) * 9),
+    rgb(0 0 0 / 0.977) calc(var(--_from) + var(--_step) * 10),
+    rgb(0 0 0 / 0.995) calc(var(--_from) + var(--_step) * 11),
+    #000 calc(var(--_from) + var(--_step) * 12)
+  );
+}
+
+/* A slim scrollbar that stays on show, so it's clear the panel has more to read. */
+@utility scrollbar-visible {
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: 999px;
+    background: rgb(0 0 0 / 0.28);
+    background-clip: content-box;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(0 0 0 / 0.45);
+    background-clip: content-box;
+  }
+}
+
+@layer base {
+  /* Matched per element, so the language switch is set in the language it names. */
+  :lang(ar) {
+    font-family: var(--font-cairo), var(--font-sans);
+  }
+
+  :lang(en) {
+    font-family: var(--font-sans);
+  }
+}

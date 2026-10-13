@@ -1,0 +1,26 @@
+{
+  "name": "guiderplan",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w @guiderplan/shared && concurrently -n shared,api,web -c auto \"npm run dev -w @guiderplan/shared\" \"npm run dev -w @guiderplan/api\" \"npm run dev -w @guiderplan/web\"",
+    "build": "npm run build -w @guiderplan/shared && npm run build -w @guiderplan/web && npm run build -w @guiderplan/api",
+    "start": "npm run start -w @guiderplan/api",
+    "typecheck": "npm run build -w @guiderplan/shared && npm run typecheck -w @guiderplan/web -w @guiderplan/api",
+    "lint": "npm run lint -w @guiderplan/web -w @guiderplan/api",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "prettier": "^3.9.10"
+  }
+}
