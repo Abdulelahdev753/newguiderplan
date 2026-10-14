@@ -39,13 +39,12 @@ export function About({ lang, dict }: Props) {
           <h2 className="text-3xl/[1.3] font-extrabold text-ink lg:text-4xl/[1.3] ltr:tracking-tight">
             {copy.title}
           </h2>
-          {/* One sentence per line where the column is wide enough to hold each on its own. */}
-          <p className="mt-3 text-base/7 text-pretty text-ink-muted lg:mt-4 lg:text-xl/9">
-            {copy.lines.map((line) => (
-              <span key={line} className="lg:block">
-                {line}{" "}
-              </span>
-            ))}
+          {/* One justified block, so every line runs the full width. The last line is centred
+              like the rest of the column on phones, and starts at the edge from tablets up. From
+              1280px the column stops growing, and the Arabic at 19px fills exactly four lines,
+              so its last line is justified too. */}
+          <p className="mt-3 text-justify text-base/7 text-ink-muted [text-align-last:center] sm:[text-align-last:start] lg:mt-4 lg:text-xl/9 xl:rtl:text-[19px]/[1.8] xl:rtl:[text-align-last:justify]">
+            {copy.lines.join(" ")}
           </p>
           {/* Name and role on one line, split by a hairline like the footer's registration. */}
           <p className="mt-5 flex items-center justify-center gap-3 text-base/6 text-ink-muted sm:justify-start">

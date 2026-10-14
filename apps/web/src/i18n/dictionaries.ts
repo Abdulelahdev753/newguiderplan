@@ -16,8 +16,12 @@ const en = {
     closeMenu: "Close menu",
   },
   hero: {
-    title: "Your guide to London",
-    subtitle: "An easier, more enjoyable trip with our travel itinerary.",
+    // Two lines of one headline; the second is set in brand blue, and its last words
+    // (titleMark) are underlined twice in red, as if by hand.
+    title: "Enjoy travel guides",
+    titleAccent: "that handle",
+    titleMark: "the planning",
+    subtitle: "Travel guides built on the real experiences of Gulf travellers.",
     imageAlt: "The GuiderPlan London guide open on a phone",
   },
   products: {
@@ -175,8 +179,7 @@ const en = {
   },
   reviews: {
     title: "What customers say",
-    subtitle:
-      "Real replies our customers sent us on WhatsApp. Tap any picture to enlarge it. Phone numbers are hidden.",
+    subtitle: "Here are some of our valued customers' experiences, shared on WhatsApp.",
     // Short English renderings of the Arabic messages, in picture order.
     items: [
       "Honestly one of the most beautiful travel guides I have seen. You can tell how much effort and creativity went into it.",
@@ -199,9 +202,9 @@ const en = {
       count: 1000,
       before: "",
       after: "+",
-      label: "happy customers trust GuiderPlan",
+      label: "More than a thousand customers trust our travel guides",
       // Read out in place of the moving number.
-      full: "More than 1,000 happy customers trust GuiderPlan",
+      full: "More than a thousand customers trust our travel guides",
     },
   },
   howItWorks: {
@@ -218,7 +221,8 @@ const en = {
       },
       pay: {
         title: "Pay with StreamPay",
-        description: "Complete your payment through StreamPay.",
+        description:
+          "Your payment is secure and fully encrypted, through StreamPay, the best Saudi payment gateway.",
         imageAlt: "The StreamPay payment page",
       },
       receive: {
@@ -230,11 +234,11 @@ const en = {
   },
   about: {
     title: "About me",
-    // Three sentences; each sits on its own line on desktop.
+    // Three sentences, run together as one justified paragraph.
     lines: [
-      "I plan every trip I take day by day.",
-      "GuiderPlan turns those plans into ready-made guides.",
-      "So you spend your time enjoying the city, not searching.",
+      "I'm Ghaith Salama, founder of GuiderPlan:",
+      "I built this site to guide Gulf travellers to tried-and-tested places, chosen from my own trips and the experiences of other Gulf travellers.",
+      "My goal is to save you the time and hassle of planning, so you can enjoy your trip without paying large sums to tour guides and travel agencies.",
     ],
     name: "Ghaith Salama",
     role: "Founder of GuiderPlan",
@@ -282,8 +286,10 @@ const ar: Dictionary = {
     closeMenu: "أغلق القائمة",
   },
   hero: {
-    title: "دليلك للندن",
-    subtitle: "رحلتك أسهل وأمتع مع جدولنا السياحي.",
+    title: "استمتع بأدلة سياحية",
+    titleAccent: "تشيل عنك",
+    titleMark: "هم التخطيط",
+    subtitle: "أدلة سياحية مصممة من واقع تجارب سياح خليجيين.",
     imageAlt: "دليل لندن من GuiderPlan معروض على هاتف",
   },
   products: {
@@ -435,8 +441,7 @@ const ar: Dictionary = {
   },
   reviews: {
     title: "آراء العملاء",
-    subtitle:
-      "ردود حقيقية وصلتنا من عملائنا على واتساب. اضغط على أي صورة لتكبيرها. أرقام الهواتف مخفية.",
+    subtitle: "هذه بعض من تجارب عملائنا الكرام عبر الواتس اب.",
     items: [
       "بصراحة من أجمل الأدلة السياحية اللي شفتها، واضح جدًا حجم الجهد والإبداع المبذول فيه.",
       "حملت الجدول واطلعت عليه، استفدت منه خصوصًا في ترتيب زيارة الأماكن السياحية ومساراتها. يوفر جهدًا ووقتًا كثيرًا.",
@@ -457,8 +462,8 @@ const ar: Dictionary = {
       count: 1000,
       before: "+",
       after: "",
-      label: "عميل سعيد يثقون في GuiderPlan",
-      full: "أكثر من 1000 عميل سعيد يثقون في GuiderPlan",
+      label: "أكثر من ألف عميل يثقون في أدلتنا السياحية",
+      full: "أكثر من ألف عميل يثقون في أدلتنا السياحية",
     },
   },
   howItWorks: {
@@ -474,7 +479,8 @@ const ar: Dictionary = {
       },
       pay: {
         title: "ادفع عبر StreamPay",
-        description: "أكمل عملية الدفع عبر StreamPay.",
+        description:
+          "يتم الدفع بشكل آمن وعالي التشفير بالتعاون مع بوابة دفع ستريم باي، وهي أفضل بوابة دفع سعودية.",
         imageAlt: "صفحة الدفع في StreamPay",
       },
       receive: {
@@ -487,9 +493,9 @@ const ar: Dictionary = {
   about: {
     title: "من أنا",
     lines: [
-      "أخطط لكل رحلة أسافرها يومًا بيوم.",
-      "GuiderPlan يحوّل هذه الخطط إلى أدلة جاهزة.",
-      "عشان تقضي وقتك مستمتعًا بالمدينة، مو بالبحث.",
+      "أنا غيث سلامة مؤسس GuiderPlan:",
+      "أسّست هذا الموقع لأرشد السيّاح الخليجيين إلى أماكن مجرّبة اخترتها من واقع تجاربي الشخصية وتجارب السيّاح الخليجيين.",
+      "هدفي أن أوفّر عليكم وقت التخطيط وعناءه لتستمتعوا برحلتكم دون أن تدفعوا مبالغ كبيرة على المرشدين والمكاتب السياحية.",
     ],
     name: "غيث سلامة",
     role: "مؤسس GuiderPlan",

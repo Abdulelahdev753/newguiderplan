@@ -46,8 +46,14 @@ export function HowItWorks({ dict }: { dict: Dictionary }) {
           const step = copy.steps[id];
 
           return (
-            <li key={id} className="w-[min(78vw,20rem)] shrink-0 lg:w-auto">
-              <FadeCard image={image} imageAlt={step.imageAlt} art={art} className="aspect-square">
+            <li key={id} className="@container w-[min(78vw,20rem)] shrink-0 lg:w-auto">
+              {/* Square, but never shorter than its copy, and as tall as the tallest card. */}
+              <FadeCard
+                image={image}
+                imageAlt={step.imageAlt}
+                art={art}
+                className="h-full min-h-[100cqw]"
+              >
                 {/* Arabic script is joined, so letter-spacing and uppercase are Latin-only. */}
                 <p className="mb-2 text-[11px]/4 font-extrabold text-ink-muted ltr:tracking-[0.1em] ltr:uppercase rtl:text-xs/5">
                   {copy.step.replace("{number}", String(index + 1))}
@@ -55,9 +61,7 @@ export function HowItWorks({ dict }: { dict: Dictionary }) {
                 <h3 className="text-3xl/[1.05] font-medium text-balance text-ink ltr:font-serif ltr:tracking-[-0.035em] rtl:text-2xl/[1.4] rtl:font-extrabold">
                   {step.title}
                 </h3>
-                <p className="mt-3 max-w-[34ch] text-sm/[1.55] text-pretty text-ink-muted">
-                  {step.description}
-                </p>
+                <p className="mt-3 text-sm/[1.55] text-pretty text-ink-muted">{step.description}</p>
               </FadeCard>
             </li>
           );

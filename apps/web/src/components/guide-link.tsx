@@ -6,7 +6,8 @@ import type { Locale } from "@/i18n/config";
 
 const sizes = {
   nav: "h-10 px-3.5 text-[15px]/[22px] lg:h-11 lg:px-4 lg:text-base/[22px]",
-  hero: "h-13 px-6 text-lg/[26px]",
+  // 44px tall on phones, the smallest comfortable touch target, then full size from tablets.
+  hero: "h-11 px-5 text-base/[22px] sm:h-13 sm:px-6 sm:text-lg/[26px]",
 };
 
 type Props = {

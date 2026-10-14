@@ -6,7 +6,8 @@ type Props = {
   imageAlt: string;
   /** Which part of the picture to keep in view when it is cropped, e.g. "50% 30%". */
   imagePosition?: string;
-  /** A decorative drawing, set a little below the centre of the space above the copy. */
+  /** A decorative drawing, centred a little low in the space above the copy. It takes up
+      room in the card, so longer copy grows the card instead of running into it. */
   art?: ReactNode;
   /** Sets the card's height or shape. */
   className: string;
@@ -18,7 +19,7 @@ type Props = {
 export function FadeCard({ image, imageAlt, imagePosition, art, className, children }: Props) {
   return (
     <article
-      className={`relative isolate flex flex-col justify-end overflow-hidden rounded-[26px] bg-white p-6 shadow-card outline outline-black/16 focus-within:ring-4 focus-within:ring-brand/50 ${className}`}
+      className={`relative isolate flex flex-col justify-end overflow-clip rounded-[26px] bg-white p-6 shadow-card outline outline-black/16 focus-within:ring-4 focus-within:ring-brand/50 ${className}`}
     >
       {image ? (
         <img
@@ -45,7 +46,7 @@ export function FadeCard({ image, imageAlt, imagePosition, art, className, child
       {art ? (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 grid h-[66%] translate-y-1 place-items-center lg:translate-y-7"
+          className="pointer-events-none -mx-6 grid flex-auto place-items-center pt-6 pb-5 lg:pt-10 lg:pb-7"
         >
           {art}
         </div>
