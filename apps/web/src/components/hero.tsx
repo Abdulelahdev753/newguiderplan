@@ -3,9 +3,10 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { GuideLink } from "./guide-link";
 import { ScribbleUnderline } from "./scribble-underline";
 
+// Each picture comes at 1x and 2x, so sharp screens get the detail and others save the bytes.
 const desktopImages: Record<Locale, string> = {
-  en: "/images/hero-desktop.webp",
-  ar: "/images/hero-desktop-ar.webp",
+  en: "/images/hero-desktop-1280.webp 1280w, /images/hero-desktop-2560.webp 2560w",
+  ar: "/images/hero-desktop-ar-1280.webp 1280w, /images/hero-desktop-ar-2560.webp 2560w",
 };
 
 // Inline-block, so the gradient spans the line's height just as it would on the whole line.
@@ -52,11 +53,15 @@ export function Hero({ lang, dict }: Props) {
         <source
           media="(min-width: 1024px)"
           srcSet={desktopImages[lang]}
+          // The picture fills the hero's height (at most 50rem) at 16:9.
+          sizes="min(89rem, 100vw)"
           width={1280}
           height={720}
         />
         <img
-          src="/images/hero-mobile.webp"
+          src="/images/hero-mobile-1080.webp"
+          srcSet="/images/hero-mobile-720.webp 720w, /images/hero-mobile-1080.webp 1080w, /images/hero-mobile-1620.webp 1620w"
+          sizes="100vw"
           width={1080}
           height={1350}
           alt={dict.hero.imageAlt}

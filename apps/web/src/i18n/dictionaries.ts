@@ -31,6 +31,7 @@ const en = {
     price: "SAR {amount}",
     buy: "Buy the guide",
     moreInfo: "Read more",
+    newVersion: "New version",
     items: {
       london: {
         name: "London",
@@ -153,26 +154,84 @@ const en = {
         text: "Download it once and open it any time during your trip.",
       },
     ],
-    planTitle: "Day by day",
-    extrasTitle: "Also in this guide",
-    // Only guides listed here show a day-by-day outline.
-    plans: {
-      london: {
-        meta: "20 pages · 7 days",
-        days: [
-          "Hyde Park and Oxford Street: an easy first day of walking, shopping and food in central London.",
-          "Two of London's main areas on one walking route, including Covent Garden.",
-          "Notting Hill and Paddington.",
-          "Chelsea and Knightsbridge, two of London's most elegant areas.",
-          "Historic London: a walk along the river, a boat ride, and a viewpoint or a mall to finish.",
-          "A shopping day in the best places to shop, with restaurants worth the stop.",
-          "A day trip to Edinburgh by train, with a walk around its main sights.",
+    // Guides listed here replace the general list above with their own outline.
+    guides: {
+      prague: {
+        headline: "Discover Prague and plan your trip with ease",
+        intro:
+          "A guide that brings together the best places, experiences and restaurants, with a daily route so you can simply enjoy your trip.",
+        sections: [
+          "Where to stay",
+          "Nature and parks",
+          "Shopping and outlets",
+          "Activities and museums",
+          "Restaurants and cafés",
+          "Daily itinerary",
         ],
-        extras: [
-          "London's parks and which day each one fits: Hyde Park, Regent's Park, Holland Park and Richmond Park.",
-          "Half-day ideas: Canary Wharf and Battersea Power Station.",
-          "What not to miss in each season, from Winter Wonderland to Kew Gardens in spring.",
-          "The essential apps: Citymapper, Google Maps, Bolt, Trainline and more.",
+      },
+      london: {
+        headline: "Everything you need for London in one place",
+        intro:
+          "From choosing where to stay to shopping, food and the main sights, with an itinerary that helps you plan your days.",
+        sections: [
+          "Where to stay in London",
+          "Nature and parks",
+          "Shopping and outlets",
+          "Activities and museums",
+          "Seasonal spots",
+          "Restaurants and cafés",
+          "Food markets and experiences",
+          "Daily itinerary",
+        ],
+      },
+      bali: {
+        headline: "Discover Bali and enjoy every moment",
+        intro:
+          "A practical guide that helps you get ready for the trip and find the most beautiful places and experiences in Bali.",
+        sections: [
+          "Before you fly and on arrival",
+          "Health and safety",
+          "Getting around and apps",
+          "Stays and villas",
+          "Restaurants and cafés",
+          "Activities and events",
+          "The best time to visit",
+          "Day trips",
+          "Trip itinerary",
+          "My own experience in Bali",
+        ],
+      },
+      amsterdam: {
+        headline: "Discover Amsterdam the easy way",
+        intro:
+          "A sightseeing route and daily itinerary that help you visit the top places and enjoy the best restaurants and events.",
+        sections: [
+          "The top sights",
+          "Restaurants and cafés",
+          "Activities and events",
+          "Trip route and daily itinerary",
+        ],
+      },
+      barcelona: {
+        headline: "Enjoy Barcelona with ease",
+        intro:
+          "A short guide that brings together the main sights, restaurants and activities, with a daily itinerary to organise your trip.",
+        sections: [
+          "The main sights",
+          "Restaurants and cafés",
+          "Activities and events",
+          "Trip route and daily itinerary",
+        ],
+      },
+      northItaly: {
+        headline: "Discover the beauty of Northern Italy",
+        intro:
+          "A route that brings together the most beautiful destinations, with a daily itinerary and standout places to eat and things to do.",
+        sections: [
+          "The most beautiful towns and lakes",
+          "Restaurants and cafés",
+          "Activities and experiences",
+          "Trip route and daily itinerary",
         ],
       },
     },
@@ -232,6 +291,60 @@ const en = {
       },
     },
   },
+  partner: {
+    title: "In partnership with Travel Stars",
+    body: "GuiderPlan has partnered with Travel Stars (نجوم السفر) to help you book your flights and hotels. Message us on WhatsApp for an offer on your trip.",
+    button: "Contact us on WhatsApp",
+    whatsappMessage: "Hello, I would like an offer for my trip through Travel Stars.",
+    logoAlt: "Travel Stars (نجوم السفر) logo",
+  },
+  faqs: {
+    title: "Frequently asked questions",
+    subtitle: "Everything you need to know before and after you buy.",
+    items: [
+      {
+        question: "How do I get the guide after paying?",
+        answer:
+          "Once you pay, you are taken straight back to the download page. As soon as the payment is confirmed, a button appears to download your guide as a PDF.",
+      },
+      {
+        question: "How long does the download link last?",
+        answer:
+          "The link works for 20 minutes after payment, and you can download the guide up to 3 times. Save the file to your phone as soon as you download it.",
+      },
+      {
+        question: "My link expired before I downloaded the guide. What now?",
+        answer: "Message us on WhatsApp with your order number and we will send your guide again.",
+      },
+      {
+        question: "How do I use the guide on my trip?",
+        answer:
+          "The guide is a PDF you open on your phone. Every place has its Google Maps link, so you tap it and go.",
+      },
+      {
+        question: "Do I need the internet to use it?",
+        answer:
+          "Once downloaded, the file opens without the internet. The Google Maps links need a connection to open the map.",
+      },
+      {
+        question: "What language are the guides in?",
+        answer: "The guides are written in Arabic.",
+      },
+      {
+        question: "Is payment secure, and how can I pay?",
+        answer:
+          "Payment goes through StreamPay, a secure payment provider. You can pay with mada, Apple Pay, Visa or Mastercard.",
+      },
+      {
+        question: "Can I get a refund?",
+        answer:
+          "The guide is a digital file delivered straight away, so purchases cannot be refunded. If something goes wrong with your order, message us on WhatsApp and we will sort it out.",
+      },
+    ],
+    more: "Still have a question?",
+    whatsapp: "Message us on WhatsApp",
+    whatsappMessage: "Hello, I have a question about GuiderPlan.",
+  },
   about: {
     title: "About me",
     // Three sentences, run together as one justified paragraph.
@@ -242,7 +355,6 @@ const en = {
     ],
     name: "Ghaith Salama",
     role: "Founder of GuiderPlan",
-    guides: "Guides so far",
     imageAlt: "Ghaith in front of the Colosseum in Rome",
   },
   footer: {
@@ -298,6 +410,7 @@ const ar: Dictionary = {
     price: "{amount} ر.س",
     buy: "اشترِ الدليل",
     moreInfo: "اقرأ المزيد",
+    newVersion: "إصدار جديد",
     items: {
       london: {
         name: "لندن",
@@ -416,25 +529,77 @@ const ar: Dictionary = {
         text: "حمّله مرة وحدة وافتحه أي وقت في رحلتك.",
       },
     ],
-    planTitle: "يومًا بيوم",
-    extrasTitle: "وفي الدليل أيضًا",
-    plans: {
-      london: {
-        meta: "20 صفحة · 7 أيام",
-        days: [
-          "هايد بارك وشارع أكسفورد: يوم أول خفيف يجمع التمشية والتسوق والأكل في وسط لندن.",
-          "أهم منطقتين في لندن على خط مشي واحد مرتب، ومنها كوفنت جاردن.",
-          "نوتنق هيل وبادينغتون.",
-          "تشيلسي ونايتسبريدج، منطقتان راقيتان في لندن.",
-          "قلب لندن التاريخي: تمشية على النهر، رحلة بالقارب، ونختم بإطلالة أو مول.",
-          "يوم تسوق في أفضل أماكن التسوق، مع مطاعم تستاهل الوقفة.",
-          "رحلة يوم واحد إلى إدنبرة بالقطار، مع التمشية وأهم المعالم.",
+    guides: {
+      prague: {
+        headline: "اكتشف براغ وخطط رحلتك بسهولة",
+        intro: "دليل يجمع لك أهم الأماكن والتجارب والمطاعم وخط السير اليومي لتستمتع برحلتك.",
+        sections: [
+          "السكن والفنادق",
+          "الطبيعة والحدائق",
+          "التسوق والأوتلت",
+          "الأنشطة والمتاحف",
+          "المطاعم والمقاهي",
+          "جدول الرحلة اليومي",
         ],
-        extras: [
-          "حدائق لندن وأي يوم يناسب كل وحدة: هايد بارك، ريجنتس بارك، هولاند بارك وريتشموند بارك.",
-          "أماكن تستاهل نص يوم: كناري وارف ومحطة باترسي.",
-          "أماكن لا تفوتها حسب الموسم، من Winter Wonderland إلى حدائق كيو في الربيع.",
-          "أهم التطبيقات: Citymapper و Google Maps و Bolt و Trainline وغيرها.",
+      },
+      london: {
+        headline: "كل ما تحتاجه لرحلتك إلى لندن في مكان واحد",
+        intro: "من اختيار السكن إلى التسوق والمطاعم وأهم المعالم، مع جدول يساعدك ترتب أيامك.",
+        sections: [
+          "السكن في لندن",
+          "الطبيعة والحدائق",
+          "التسوق والأوتلت",
+          "الأنشطة والمتاحف",
+          "الأماكن الموسمية",
+          "المطاعم والكافيهات",
+          "أسواق الأكل والتجارب",
+          "جدول الرحلة اليومي",
+        ],
+      },
+      bali: {
+        headline: "اكتشف بالي واستمتع بكل لحظة",
+        intro: "دليل عملي يساعدك تستعد للسفر وتكتشف أجمل الأماكن والتجارب في بالي.",
+        sections: [
+          "قبل السفر والوصول",
+          "الصحة والسلامة",
+          "التنقل والتطبيقات",
+          "السكن والفلل",
+          "المطاعم والكافيهات",
+          "الأنشطة والفعاليات",
+          "أفضل وقت للزيارة",
+          "الرحلات اليومية",
+          "جدول الرحلة",
+          "تجربتي الشخصية في بالي",
+        ],
+      },
+      amsterdam: {
+        headline: "اكتشف أمستردام بطريقة أسهل",
+        intro: "مسار سياحي وجدول يومي يساعدك تزور أبرز الأماكن وتستمتع بأفضل المطاعم والفعاليات.",
+        sections: [
+          "أهم الأماكن السياحية",
+          "المطاعم والمقاهي",
+          "الأنشطة والفعاليات",
+          "مسار الرحلة والجدول اليومي",
+        ],
+      },
+      barcelona: {
+        headline: "عيش تجربة برشلونة بكل سهولة",
+        intro: "دليل مختصر يجمع لك أبرز المعالم والمطاعم والأنشطة مع جدول يومي لتنظيم رحلتك.",
+        sections: [
+          "أهم المعالم السياحية",
+          "المطاعم والمقاهي",
+          "الأنشطة والفعاليات",
+          "مسار الرحلة والجدول اليومي",
+        ],
+      },
+      northItaly: {
+        headline: "اكتشف جمال الشمال الإيطالي",
+        intro: "خط سير يجمع لك أجمل الوجهات مع جدول يومي وأماكن مميزة للأكل والأنشطة خلال رحلتك.",
+        sections: [
+          "أجمل المدن والبحيرات",
+          "المطاعم والمقاهي",
+          "الأنشطة والتجارب",
+          "مسار الرحلة والجدول اليومي",
         ],
       },
     },
@@ -490,6 +655,59 @@ const ar: Dictionary = {
       },
     },
   },
+  partner: {
+    title: "بالشراكة مع نجوم السفر",
+    body: "يسعدنا نعلن عن شراكتنا مع نجوم السفر لمساعدتك في حجز طيرانك وفندقك. تواصل معنا على الواتساب واحصل على عرض لرحلتك.",
+    button: "تواصل معنا على الواتساب",
+    whatsappMessage: "السلام عليكم، أبغى عرض لرحلتي عن طريق نجوم السفر.",
+    logoAlt: "شعار نجوم السفر",
+  },
+  faqs: {
+    title: "الأسئلة الشائعة",
+    subtitle: "كل اللي تحتاج تعرفه قبل الشراء وبعده.",
+    items: [
+      {
+        question: "كيف أستلم الدليل بعد الدفع؟",
+        answer:
+          "بعد ما تدفع ترجع مباشرة لصفحة التحميل، وأول ما يتأكد الدفع يظهر لك زر تحميل الدليل كملف PDF.",
+      },
+      {
+        question: "كم مدة رابط التحميل؟",
+        answer:
+          "الرابط يشتغل لمدة 20 دقيقة بعد الدفع، وتقدر تحمّل الدليل حتى 3 مرات. احفظ الملف على جوالك أول ما تحمّله.",
+      },
+      {
+        question: "انتهى الرابط قبل ما أحمّل الدليل، وش أسوي؟",
+        answer: "تواصل معنا على الواتساب برقم طلبك ونرسل لك الدليل مرة ثانية.",
+      },
+      {
+        question: "كيف أستخدم الدليل في رحلتي؟",
+        answer: "الدليل ملف PDF تفتحه من جوالك، ولكل مكان رابطه على Google Maps. اضغط وامشِ.",
+      },
+      {
+        question: "هل أحتاج إنترنت عشان أستخدمه؟",
+        answer:
+          "بعد التحميل يفتح الملف بدون إنترنت، أما روابط Google Maps فتحتاج اتصال عشان تفتح الخريطة.",
+      },
+      {
+        question: "بأي لغة الأدلة؟",
+        answer: "الأدلة مكتوبة باللغة العربية.",
+      },
+      {
+        question: "هل الدفع آمن؟ وش طرق الدفع؟",
+        answer:
+          "الدفع يتم عبر StreamPay بشكل آمن، وتقدر تدفع بمدى أو Apple Pay أو فيزا أو ماستركارد.",
+      },
+      {
+        question: "هل أقدر أسترجع المبلغ؟",
+        answer:
+          "الدليل ملف رقمي يوصلك فورًا، لذلك لا يمكن استرجاع المبلغ بعد الشراء. ولو واجهتك أي مشكلة في طلبك، تواصل معنا على الواتساب ونحلها لك.",
+      },
+    ],
+    more: "عندك سؤال ثاني؟",
+    whatsapp: "تواصل معنا على الواتساب",
+    whatsappMessage: "السلام عليكم، عندي سؤال عن GuiderPlan.",
+  },
   about: {
     title: "من أنا",
     lines: [
@@ -499,7 +717,6 @@ const ar: Dictionary = {
     ],
     name: "غيث سلامة",
     role: "مؤسس GuiderPlan",
-    guides: "الأدلة حتى الآن",
     imageAlt: "غيث أمام الكولوسيوم في روما",
   },
   footer: {

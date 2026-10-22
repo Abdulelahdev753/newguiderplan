@@ -57,16 +57,22 @@ function DetailsDialog({
   // Opened as a modal, the browser traps focus inside and closes it on Escape.
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (dialog && !dialog.open) dialog.showModal();
+    if (dialog && !dialog.open) {
+      dialog.showModal();
+      // The browser would focus the close button and ring it as if it were picked. Start
+      // on the panel instead; Tab still reaches the button.
+      dialog.focus();
+    }
   }, []);
 
-  // Only some guides have their day-by-day outline written up yet.
-  const plan = copy.plans[productId as keyof typeof copy.plans] as
-    (typeof copy.plans)[keyof typeof copy.plans] | undefined;
+  // Guides with their own outline show it; the rest show what every guide includes.
+  const guide = copy.guides[productId as keyof typeof copy.guides] as
+    (typeof copy.guides)[keyof typeof copy.guides] | undefined;
 
   return (
     <dialog
       ref={dialogRef}
+      tabIndex={-1}
       aria-labelledby={titleId}
       onClose={onClose}
       // A click that lands on the dialog itself, not its contents, is a click on the backdrop.
@@ -131,14 +137,20 @@ function DetailsDialog({
             tabIndex={0}
             className="scrollbar-visible min-h-0 flex-1 overflow-y-scroll overscroll-contain px-6 py-5 outline-none focus-visible:ring-4 focus-visible:ring-brand/50 focus-visible:ring-inset"
           >
-            <p className="text-base/7 text-pretty text-ink-muted">{description}</p>
-            {plan ? (
-              <p className="mt-2 text-sm/6 font-semibold text-brand-ink">{plan.meta}</p>
+            {/* Every guide uses one layout: a short intro, then a ticked list of what's inside. */}
+            {guide ? (
+              <p className="text-base/7 font-semibold text-pretty text-ink">{guide.headline}</p>
             ) : null}
+            <p className={`text-base/7 text-pretty text-ink-muted ${guide ? "mt-1" : ""}`}>
+              {guide ? guide.intro : description}
+            </p>
 
             <h3 className="mt-6 text-lg/7 font-extrabold">{copy.insideTitle}</h3>
-            <ul className="mt-3 flex flex-col gap-4">
-              {copy.features.map((feature) => (
+            <ul className={`mt-3 flex flex-col ${guide ? "gap-3" : "gap-4"}`}>
+              {(guide
+                ? guide.sections.map((title) => ({ title, text: undefined }))
+                : copy.features
+              ).map((feature) => (
                 <li key={feature.title} className="flex gap-3">
                   <svg
                     viewBox="0 0 20 20"
@@ -154,34 +166,13 @@ function DetailsDialog({
                   </svg>
                   <div>
                     <p className="text-base/6 font-semibold">{feature.title}</p>
-                    <p className="mt-0.5 text-sm/6 text-ink-muted">{feature.text}</p>
+                    {feature.text ? (
+                      <p className="mt-0.5 text-sm/6 text-ink-muted">{feature.text}</p>
+                    ) : null}
                   </div>
                 </li>
               ))}
             </ul>
-
-            {plan ? (
-              <>
-                <h3 className="mt-7 text-lg/7 font-extrabold">{copy.planTitle}</h3>
-                <ol className="mt-3 flex flex-col gap-3">
-                  {plan.days.map((day, index) => (
-                    <li key={day} className="flex gap-3">
-                      <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-brand/12 text-sm/none font-extrabold text-brand-ink tabular-nums">
-                        {index + 1}
-                      </span>
-                      <p className="pt-0.5 text-sm/6 text-ink">{day}</p>
-                    </li>
-                  ))}
-                </ol>
-
-                <h3 className="mt-7 text-lg/7 font-extrabold">{copy.extrasTitle}</h3>
-                <ul className="mt-3 flex list-disc flex-col gap-1.5 ps-5 text-sm/6 text-ink-muted marker:text-brand">
-                  {plan.extras.map((extra) => (
-                    <li key={extra}>{extra}</li>
-                  ))}
-                </ul>
-              </>
-            ) : null}
           </div>
 
           <footer className="flex items-center justify-between gap-4 border-t border-black/10 px-6 py-4">

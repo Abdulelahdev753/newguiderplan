@@ -14,16 +14,25 @@ type Product = {
   price: string;
   /** The price before a discount; shown struck through beside the current one. */
   oldPrice?: string;
+  /** Marks a guide that has just been rewritten with a ribbon across the card's corner. */
+  isNew?: boolean;
 };
 
 const products: Product[] = [
-  { id: "london", image: "/images/products/london.webp", focus: "30% 40%", price: "59.99" },
+  {
+    id: "london",
+    image: "/images/products/london.webp",
+    focus: "30% 40%",
+    price: "59.99",
+    isNew: true,
+  },
   {
     id: "bali",
     image: "/images/products/bali.webp",
     focus: "50% 60%",
     price: "89.99",
     oldPrice: "118.99",
+    isNew: true,
   },
   {
     id: "barcelona",
@@ -51,6 +60,7 @@ const products: Product[] = [
     image: "/images/products/prague.webp",
     focus: "70% 28%",
     price: "49.99",
+    isNew: true,
   },
 ];
 
@@ -96,7 +106,7 @@ export function Products({ lang, dict }: Props) {
       {/* Three to a row on a phone, so the whole range fits in one screen. The row reaches
           a little into the page margin to give each picture more room. */}
       <ul className="mx-auto grid max-w-5xl grid-cols-3 gap-2 max-sm:-mx-2 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-        {products.map(({ id, image, focus, price, oldPrice }) => {
+        {products.map(({ id, image, focus, price, oldPrice, isNew }) => {
           const item = copy.items[id];
 
           return (
@@ -107,6 +117,13 @@ export function Products({ lang, dict }: Props) {
                 imagePosition={focus}
                 className="h-[14.75rem] [--fade-from:18%] [--fade-to:50%] [--image-height:50%] max-sm:rounded-2xl max-sm:p-2 max-sm:pb-1.5 max-sm:[--fade-from:5.25rem] max-sm:[--fade-to:7.25rem] max-sm:[--image-height:7.5rem] sm:h-[30rem]"
               >
+                {/* A band laid across the leading top corner; the card's rounded clip trims
+                    its ends. It shares the buttons' inner highlight. */}
+                {isNew ? (
+                  <span className="absolute -start-7 top-3 z-10 w-24 bg-orange-500 py-0.5 text-center text-[8px]/3 font-extrabold text-white shadow-cta ltr:-rotate-45 ltr:tracking-[0.08em] ltr:uppercase rtl:rotate-45 rtl:text-[9px]/3 sm:-start-10 sm:top-6 sm:w-40 sm:py-1.5 sm:text-xs/4 sm:rtl:text-sm/4">
+                    {copy.newVersion}
+                  </span>
+                ) : null}
                 <h3 className="text-base/[1.1] font-medium text-balance text-ink sm:text-4xl/[0.95] ltr:font-serif ltr:tracking-[-0.045em] rtl:text-sm/[1.4] rtl:font-extrabold sm:rtl:text-3xl/[1.3]">
                   {item.name}
                 </h3>

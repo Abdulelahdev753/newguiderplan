@@ -1,15 +1,11 @@
-import Link from "next/link";
-import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 type Props = {
-  lang: Locale;
   dict: Dictionary;
 };
 
-export function About({ lang, dict }: Props) {
+export function About({ dict }: Props) {
   const copy = dict.about;
-  const guides = Object.entries(dict.products.items);
 
   return (
     <section id="about" className="scroll-mt-25 px-5 pb-20 lg:scroll-mt-33 lg:px-8 lg:pb-28">
@@ -33,8 +29,6 @@ export function About({ lang, dict }: Props) {
           />
         </div>
 
-        {/* As tall as the picture: the story starts at its top edge and the guides end at its
-            bottom edge. */}
         <div className="flex flex-col text-center sm:text-start">
           <h2 className="text-3xl/[1.3] font-extrabold text-ink lg:text-4xl/[1.3] ltr:tracking-tight">
             {copy.title}
@@ -51,22 +45,6 @@ export function About({ lang, dict }: Props) {
             <span className="font-extrabold text-ink">{copy.name}</span>
             <span className="border-s border-black/16 ps-3">{copy.role}</span>
           </p>
-
-          <div className="mt-10 border-t border-black/10 pt-5 sm:mt-auto">
-            <h3 className="text-sm/6 font-semibold text-ink-muted">{copy.guides}</h3>
-            <ul className="mt-3 flex flex-wrap justify-center gap-2 sm:justify-start">
-              {guides.map(([id, item]) => (
-                <li key={id}>
-                  <Link
-                    href={`/${lang}#products`}
-                    className="flex h-9 items-center rounded-full px-4 text-sm/6 font-semibold text-ink outline outline-black/16 transition-colors duration-150 ease-out hover:bg-black/5 focus-visible:ring-4 focus-visible:ring-brand/50"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </section>
