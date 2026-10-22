@@ -17,7 +17,7 @@ type Product = {
 };
 
 const products: Product[] = [
-  { id: "london", image: "/images/products/london.webp", focus: "30% 40%", price: "39.99" },
+  { id: "london", image: "/images/products/london.webp", focus: "30% 40%", price: "59.99" },
   {
     id: "bali",
     image: "/images/products/bali.webp",
@@ -50,8 +50,7 @@ const products: Product[] = [
     id: "prague",
     image: "/images/products/prague.webp",
     focus: "70% 28%",
-    price: "29.99",
-    oldPrice: "34.99",
+    price: "49.99",
   },
 ];
 

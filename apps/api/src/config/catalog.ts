@@ -17,8 +17,8 @@ export interface CatalogEntry {
 // The browser only ever sends a product id; everything else is looked up here.
 export const catalog: Record<ProductId, CatalogEntry> = {
   london: {
-    streamProductId: "a0951f24-c17f-4add-885f-f89b3db4fbcd",
-    amountHalalas: 3999,
+    streamProductId: "2948a27d-c186-4465-8eb8-778bd73fc243",
+    amountHalalas: 5999,
     bucket: "united-kingdom",
     objectPath: "London.pdf",
     downloadName: "Guiderplan-London.pdf",
@@ -57,8 +57,8 @@ export const catalog: Record<ProductId, CatalogEntry> = {
     linkName: "Guiderplan Northern Italy Guide",
   },
   prague: {
-    streamProductId: "d15010ea-2468-4e55-9d5c-a46ccdeb5717",
-    amountHalalas: 2999,
+    streamProductId: "5c7782c0-4c09-4c67-8530-b8b9b9ad696d",
+    amountHalalas: 4999,
     bucket: "czech-republic",
     objectPath: "prague.pdf",
     downloadName: "Guiderplan-Prague.pdf",
