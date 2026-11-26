@@ -3,6 +3,7 @@ import { DetailsButton } from "@/features/guide-details/details-button";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { FadeCard } from "./fade-card";
+import { SaleBanner } from "./sale-banner";
 
 type ProductId = keyof Dictionary["products"]["items"];
 
@@ -23,43 +24,45 @@ const products: Product[] = [
     id: "london",
     image: "/images/products/london.webp",
     focus: "30% 40%",
-    price: "59.99",
+    price: "44.99",
+    oldPrice: "59.99",
     isNew: true,
   },
   {
     id: "bali",
     image: "/images/products/bali.webp",
     focus: "50% 60%",
-    price: "89.99",
-    oldPrice: "118.99",
+    price: "67.49",
+    oldPrice: "89.99",
     isNew: true,
   },
   {
     id: "barcelona",
     image: "/images/products/barcelona.webp",
     focus: "45% 25%",
-    price: "29.99",
-    oldPrice: "34.99",
+    price: "22.49",
+    oldPrice: "29.99",
   },
   {
     id: "amsterdam",
     image: "/images/products/amsterdam.webp",
     focus: "50% 40%",
-    price: "29.99",
-    oldPrice: "34.99",
+    price: "22.49",
+    oldPrice: "29.99",
   },
   {
     id: "northItaly",
     image: "/images/products/north-italy.webp",
     focus: "40% 45%",
-    price: "29.99",
-    oldPrice: "34.99",
+    price: "22.49",
+    oldPrice: "29.99",
   },
   {
     id: "prague",
     image: "/images/products/prague.webp",
     focus: "70% 28%",
-    price: "49.99",
+    price: "37.49",
+    oldPrice: "49.99",
     isNew: true,
   },
 ];
@@ -94,6 +97,8 @@ export function Products({ lang, dict }: Props) {
 
   return (
     <section id="products" className="scroll-mt-25 px-5 pb-20 lg:scroll-mt-33 lg:px-8 lg:pb-28">
+      <SaleBanner copy={dict.sale} />
+
       <div className="mb-8 text-center lg:mb-12">
         <h2 className="text-3xl/[1.3] font-extrabold text-ink lg:text-4xl/[1.3] ltr:tracking-tight">
           {copy.title}

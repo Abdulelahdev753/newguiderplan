@@ -24,6 +24,14 @@ const en = {
     subtitle: "Travel guides built on the real experiences of Gulf travellers.",
     imageAlt: "The GuiderPlan London guide open on a phone",
   },
+  sale: {
+    // The White Friday notice above the guides, with a countdown to the end of the sale.
+    eyebrow: "White Friday",
+    title: "25% off every guide",
+    body: "The sale runs until the end of Sunday, Saudi time.",
+    endsIn: "Sale ends in",
+    units: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
+  },
   products: {
     title: "Choose your destination",
     subtitle: "Every guide is a ready-made itinerary you can follow from your phone.",
@@ -403,6 +411,13 @@ const ar: Dictionary = {
     titleMark: "هم التخطيط",
     subtitle: "أدلة سياحية مصممة من واقع تجارب شخصية.",
     imageAlt: "دليل لندن من GuiderPlan معروض على هاتف",
+  },
+  sale: {
+    eyebrow: "الجمعة البيضاء",
+    title: "خصم 25% على جميع الأدلة",
+    body: "العرض مستمر حتى نهاية يوم الأحد بتوقيت السعودية.",
+    endsIn: "ينتهي العرض خلال",
+    units: { days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثواني" },
   },
   products: {
     title: "اختر وجهتك",

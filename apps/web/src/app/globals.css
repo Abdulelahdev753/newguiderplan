@@ -13,6 +13,9 @@
 
   /* Two white inner shadows, 60% opacity, blur 5: (0, 2) and (-1, 0). */
   --shadow-cta: inset 0 2px 5px rgb(255 255 255 / 0.6), inset -1px 0 5px rgb(255 255 255 / 0.6);
+  /* The same two inner shadows, wider and brighter, for a large dark card. */
+  --shadow-cta-strong:
+    inset 0 4px 14px rgb(255 255 255 / 0.75), inset -2px 0 14px rgb(255 255 255 / 0.75);
   /* The same two inner shadows in black, for a white button. */
   --shadow-cta-light: inset 0 -2px 5px rgb(0 0 0 / 0.16), inset -1px 0 5px rgb(0 0 0 / 0.1);
   --shadow-card:
@@ -29,6 +32,32 @@
     }
     to {
       stroke-dashoffset: 0;
+    }
+  }
+
+  /* The flip clock's two flaps: the top folds down in the first half, the bottom in the second. */
+  --animate-flip-top: flip-top 0.6s ease-in forwards;
+  --animate-flip-bottom: flip-bottom 0.6s ease-out forwards;
+  @keyframes flip-top {
+    0% {
+      transform: rotateX(0deg);
+      z-index: 30;
+    }
+    50%,
+    100% {
+      transform: rotateX(-90deg);
+      z-index: 10;
+    }
+  }
+  @keyframes flip-bottom {
+    0%,
+    50% {
+      transform: rotateX(90deg);
+      z-index: 10;
+    }
+    100% {
+      transform: rotateX(0deg);
+      z-index: 30;
     }
   }
 
